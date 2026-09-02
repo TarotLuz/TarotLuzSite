@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TarotLuz</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #050505;
+      color: #f5f0df;
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.92);
+      border-bottom: 1px solid #3b3020;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #d8b86a;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #d8b86a;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      background:
+        radial-gradient(circle at center, #211a12 0%, #090807 40%, #050505 75%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .symbol {
+      font-size: 70px;
+      color: #d8b86a;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 110px);
+      color: #d8b86a;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 21px;
+      color: #d5d0c4;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 15px 32px;
+      border: 1px solid #d8b86a;
+      color: #d8b86a;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #d8b86a;
+      color: #050505;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      color: #d8b86a;
+      margin-bottom: 50px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 750px;
+      margin: auto;
+      font-size: 20px;
+      color: #d0cbc0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      min-height: 390px;
+      padding: 35px 25px;
+      border: 1px solid #5b4827;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #15120e, #080808);
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #d8b86a;
+      box-shadow: 0 15px 40px rgba(216,184,106,0.12);
+    }
+
+    .card-symbol {
+      font-size: 65px;
+      color: #d8b86a;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 28px;
+      color: #eee;
+      margin-bottom: 18px;
+    }
+
+    .card p {
+      color: #bdb7aa;
+    }
+
+    .about {
+      text-align: center;
+      background: #0b0a09;
+      border-top: 1px solid #211d17;
+      border-bottom: 1px solid #211d17;
+      max-width: none;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-box {
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #493a22;
+      border-radius: 15px;
+      color: #776b58;
+      background: #0c0b0a;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      border-top: 1px solid #302719;
+      color: #777;
+    }
+
+    @media (max-width: 750px) {
+      nav ul {
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .cards,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">TarotLuz</div>
+
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#tarot">Tarot</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <div class="symbol">☾ ✦ ☽</div>
+
+        <h1>TarotLuz</h1>
+
+        <p>
+          Seja bem-vindo ao TarotLuz.
+          Um espaço de amor, prosperidade, saúde,
+          equilíbrio e boas energias.
+        </p>
+
+        <a class="button" href="#tarot">
+          Entrar no universo do Tarot
+        </a>
+      </div>
+    </section>
+
+    <section id="tarot">
+      <h2 class="section-title">Tarot & Intuição</h2>
+
+      <p class="intro">
+        Permita-se desacelerar por alguns instantes,
+        ouvir sua intuição e olhar para dentro.
+        Cada carta pode trazer uma nova perspectiva
+        para suas perguntas e caminhos.
+      </p>
+
+      <br><br>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="card-symbol">☆</div>
+          <h3>A Estrela</h3>
+          <p>
+            Esperança, renovação, inspiração e confiança
+            para seguir em frente.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-symbol">☾</div>
+          <h3>A Lua</h3>
+          <p>
+            Intuição, sentimentos profundos e o convite
+            para enxergar além das aparências.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-symbol">☼</div>
+          <h3>O Sol</h3>
+          <p>
+            Clareza, vitalidade, alegria e novos caminhos
+            iluminados.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="about-content">
+        <h2 class="section-title">Sobre o TarotLuz</h2>
+
+        <p class="intro">
+          Aqui você conhecerá um pouco da minha história,
+          da minha caminhada e da minha conexão com o
+          universo do tarot e da espiritualidade.
+        </p>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <h2 class="section-title">Galeria</h2>
+
+      <div class="gallery">
+        <div class="gallery-box">Sua foto aqui</div>
+        <div class="gallery-box">Sua foto aqui</div>
+        <div class="gallery-box">Sua foto aqui</div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <h2 class="section-title">Contato</h2>
+
+      <p class="intro">
+        Entre em contato e permita-se abrir espaço
+        para novas perspectivas.
+      </p>
+
+      <a class="button" href="mailto:contato@tarotluz.com">
+        Entrar em contato
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="ano"></span> TarotLuz — Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
